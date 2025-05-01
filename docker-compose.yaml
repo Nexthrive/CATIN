@@ -1,11 +1,11 @@
 services:
   postgres:
-    image: postgres:15-alpine  # or use your custom Dockerfile
+    image: postgres:15-alpine # or use your custom Dockerfile
     ports:
-      - "5432:5432"  # Map host port 5433 → container port 5432
+      - "5433:5432" # Map host port 5433 → container port 5432
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: e
       POSTGRES_DB: Catin
     volumes:
       - postgres_data:/var/lib/postgresql/data
