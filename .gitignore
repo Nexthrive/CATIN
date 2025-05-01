@@ -10,7 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 
-.docker-compose.yaml
+
 .dockerfile
 
 # testing
@@ -45,4 +45,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 docker-compose.yaml
-docker-compose.yaml
+
