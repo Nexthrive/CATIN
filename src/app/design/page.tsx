@@ -6,6 +6,14 @@ import WeddingTemplateCard from "@/components/WeddingTemplateCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 type TemplateData = {
   id: string;
@@ -110,9 +118,28 @@ export default function ContohPage() {
       <header>
         <nav>
           <div className="flex flex-row pt-16 pb-10 justify-between px-4">
-            <button>
-              <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
-            </button>
+            <Sheet>
+              <SheetTrigger>
+                <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader className="flex flex-col gap-10">
+                  <SheetTitle className="text-2xl font-bold">CATIN</SheetTitle>
+                  <SheetDescription className="flex flex-col gap-4">
+                    <Link className="font-medium text-xl text-black" href="/">
+                      Home
+                    </Link>
+
+                    <Link
+                      className="font-medium text-xl text-black"
+                      href="/design"
+                    >
+                      Designs
+                    </Link>
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
             <Image src="/Catin.svg" width={48} height={48} alt="Logo" />
             <button>
               <Avatar>

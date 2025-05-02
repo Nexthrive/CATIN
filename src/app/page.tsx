@@ -2,16 +2,43 @@ import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 export default function Home() {
   return (
     <div className="font-[family-name:var(--font-outfit)]">
       <header>
         <nav>
           <div className="flex flex-row py-16 justify-between px-4">
-            <button>
-              <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
-            </button>
+            <Sheet>
+              <SheetTrigger>
+                <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader className="flex flex-col gap-10">
+                  <SheetTitle className="text-2xl font-bold">CATIN</SheetTitle>
+                  <SheetDescription className="flex flex-col gap-4">
+                    <Link className="font-medium text-xl text-black" href="/">
+                      Home
+                    </Link>
+
+                    <Link
+                      className="font-medium text-xl text-black"
+                      href="/design"
+                    >
+                      Designs
+                    </Link>
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+
             <Image src="/Catin.svg" width={48} height={48} alt="Logo" />
             <button>
               <Avatar>

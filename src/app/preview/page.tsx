@@ -1,17 +1,54 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-
+import gsap from "gsap";
+import { useRef, useEffect, useState } from "react";
 export default function Home() {
+  const bottomNavRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    setIsLoaded(true);
+    gsap.set(bottomNavRef.current, {
+      y: 100,
+      autoAlpha: 0,
+    });
+    gsap.to(bottomNavRef.current, {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      delay: 0.3,
+    });
+  }, []);
   return (
-    <div className="font-[family-name:var(--font-outfit)]">
-      <header>
-        <nav>
-          <div className="flex flex-row py-16 justify-between px-4">
-            <button>
-              <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
-            </button>
+    <div className="font-[family-name:var(--font-outfit)]  h-full">
+      {/* <header>
+        <nav className="">
+          <div className="flex  fixed  w-full flex-row py-16 justify-between px-4">
+             <Sheet>
+              <SheetTrigger>
+                <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader className="flex flex-col gap-10">
+                  <SheetTitle className="text-2xl font-bold">CATIN</SheetTitle>
+                  <SheetDescription className="flex flex-col gap-4">
+                    <Link className="font-medium text-xl text-black" href="/">
+                      Home
+                    </Link>
+
+                    <Link
+                      className="font-medium text-xl text-black"
+                      href="/design"
+                    >
+                      Designs
+                    </Link>
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
             <Image src="/Catin.svg" width={48} height={48} alt="Logo" />
             <button>
               <Avatar>
@@ -21,112 +58,54 @@ export default function Home() {
             </button>
           </div>
         </nav>
-      </header>
-      <main className="flex mt-10  justify-center items-center flex-col">
-        <div className="flex justify-center items-center flex-col gap-8">
-          <h1 className="font-semibold text-[#171717] text-center text-[32px] tracking-tight leading-none max-w-[14ch]">
-            The only tool you need to craft perfect wedding invitations!
-          </h1>
-          <Image
-            src="/4Rectangles.svg"
-            width={251}
-            height={248}
-            alt="WeddingRectangles"
-          />
-          <div className="flex flex-col justify-center items-center gap-4">
-            <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3">
-              Catin is here to help you...
-            </p>
+      </header> */}
+      <main className="flex justify-center relative h-full items-center px-4 flex-col">
+        <p>Invitation Design</p>
+        <div
+          ref={bottomNavRef}
+          style={{ visibility: "hidden" }}
+          className="bg-[#171717] absolute flex justify-between items-center bottom-8 w-[90%] rounded-xl pl-4 pr-6 py-4"
+        >
+          <div className="flex items-center gap-3">
             <Button
-              className="rounded-full py-3 px-6 bg-[#171717] text-white font-[family-name:var(--font-poppins)] text-xs font-medium"
               asChild
+              className="bg-[#FFFFFF] hover:text-white text-xs font-[family-name:var(--font-poppins)] font-medium text-black group"
             >
-              <Link href={"/design"}>Explore designs</Link>
+              <Link href={"/customize"}>
+                Make it yours
+                <Image
+                  src="/ArrowThing.svg"
+                  width={12}
+                  height={9}
+                  alt="ArrowDirection"
+                  className="group-hover:[filter:brightness(0)_invert(1)]"
+                />
+              </Link>
             </Button>
-          </div>
-        </div>
-      </main>
-      <section className="bg-accent-foreground mt-45 py-40 px-4">
-        <div className="flex flex-col gap-4">
-          <h2 className="font-semibold text-[32px] text-white">
-            How it{" "}
-            <span className="underline decoration-[#6bcef5] decoration-2 underline-offset-4">
-              works
-            </span>{" "}
-            ?
-          </h2>
-          <p className="font-[family-name:var(--font-poppins)] text-white text-xs max-w-[35ch] leading-5">
-            Catin helps you make the perfect invitation in 3 simple steps,
-            here’s how...
-          </p>
-        </div>
-        <div className="font-[family-name:var(--font-poppins)]">
-          <div className="flex items-center">
-            <Image
-              src="/Pick.svg"
-              width={175}
-              height={175}
-              alt="PickWeddingDesign"
-            />
-            <div className="text-white flex flex-col gap-2 justify-center">
-              <h2 className="font-semibold text-2xl">Pick !</h2>
-              <p className="text-xs leading-5">
-                Pick the design you like from the abundant of design that Catin
-                offers
-              </p>
-            </div>
-          </div>
-          <div>
-            <Image
-              className="mx-auto"
-              src="/line1.svg"
-              width={290.06}
-              height={126}
-              alt="DirectionalLine"
-            />
-          </div>
-          <div className="flex items-center">
-            <div className="">
-              <div className="text-white flex flex-col gap-2 justify-center text-right">
-                <h2 className="font-semibold text-2xl ">Customize !</h2>
-                <p className="text-xs leading-5 max-w-[24ch]">
-                  Customize the design, bla bla someting bla bla make it yours
-                </p>
-              </div>
-            </div>
-            <Image
-              src="/Customize.svg"
-              width={175}
-              height={175}
-              alt="CuztomizeWeddingDesign"
-            />
+            <Button
+              variant="outline"
+              className="bg-transparent group"
+              size="icon"
+            >
+              <Image
+                src="/cart.svg"
+                width={18}
+                height={16}
+                alt="CartIcon"
+                className="group-hover:[filter:brightness(100)_invert(1)]"
+              />
+            </Button>
           </div>
           <div className="">
             <Image
-              className="mx-auto"
-              src="/line2.svg"
-              width={290.06}
-              height={126}
-              alt="DirectionalLine2"
+              src="/CatinWhite.svg"
+              width={24}
+              height={24}
+              alt="CatinWhiteIcon"
             />
-          </div>
-          <div className="flex items-center">
-            <Image
-              src="/Order.svg"
-              width={175}
-              height={175}
-              alt="OrderWeddingDesign"
-            />
-            <div className="text-white flex flex-col gap-2 justify-center">
-              <h2 className="font-semibold text-2xl">Order !</h2>
-              <p className="text-xs leading-5">
-                Pick the design you like from the abundant of design that Catin
-                offers
-              </p>
-            </div>
           </div>
         </div>
-      </section>
+      </main>
     </div>
   );
 }

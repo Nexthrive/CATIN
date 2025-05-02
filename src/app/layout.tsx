@@ -24,8 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${outfit.variable} ${poppins.variable} antialiased`}>
+    <html lang="en" className="h-full">
+      <body
+        className={`${outfit.variable} ${poppins.variable} h-full antialiased`}
+      >
         {children}
       </body>
     </html>
