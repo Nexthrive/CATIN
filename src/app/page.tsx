@@ -61,7 +61,7 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24">
+      <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24 lg:min-h-[520px]">
         <div className="flex justify-center items-center flex-col gap-8 md:gap-12 lg:flex-row lg:w-full lg:mx-10 lg:gap-0">
           <div className="flex flex-col items-center lg:items-start lg:w-1/2">
             <h1 className="font-semibold text-[#171717] text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:text-6xl lg:text-left lg:max-w-[30ch]">
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12 lg:px-24 md:py-60 lg:py-80">
+      <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12 lg:px-24 md:py-60  lg:py-80">
         <div className="flex flex-col gap-4 md:gap-6 lg:max-w-5xl lg:mx-auto lg:text-center">
           <h2 className="font-semibold text-[32px] text-white md:text-4xl lg:text-7xl">
             How it{" "}
