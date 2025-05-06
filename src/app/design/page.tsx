@@ -115,32 +115,45 @@ export default function ContohPage() {
 
   return (
     <div className="font-[family-name:var(--font-outfit)]">
-      <header>
+     <header>
         <nav>
-          <div className="flex flex-row pt-16 pb-10 justify-between px-4">
-            <Sheet>
-              <SheetTrigger>
-                <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
-              </SheetTrigger>
-              <SheetContent>
-                <SheetHeader className="flex flex-col gap-10">
-                  <SheetTitle className="text-2xl font-bold">CATIN</SheetTitle>
-                  <SheetDescription className="flex flex-col gap-4">
-                    <Link className="font-medium text-xl text-black" href="/">
-                      Home
-                    </Link>
+          <div className="flex flex-row py-16 justify-between px-4 md:px-12 lg:px-24">
+            <div className="flex md:hidden items-center">
+              <Sheet>
+                <SheetTrigger className="md:hidden">
+                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader className="flex flex-col gap-10">
+                    <SheetTitle className="text-2xl font-bold">CATIN</SheetTitle>
+                    <SheetDescription className="flex flex-col gap-4">
+                      <Link className="font-medium text-xl text-black" href="/">
+                        Home
+                      </Link>
 
-                    <Link
-                      className="font-medium text-xl text-black"
-                      href="/design"
-                    >
-                      Designs
-                    </Link>
-                  </SheetDescription>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-            <Image src="/Catin.svg" width={48} height={48} alt="Logo" />
+                      <Link
+                        className="font-medium text-xl text-black"
+                        href="/design"
+                      >
+                        Designs
+                      </Link>
+                    </SheetDescription>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+
+            </div>
+              <Image src="/Catin.svg" width={48} height={48} alt="Logo" className="md:ml-0" />
+            
+            <div className="hidden md:flex items-center space-x-8">
+              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/">
+                Home
+              </Link>
+              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/design">
+                Designs
+              </Link>
+            </div>
+            
             <button>
               <Avatar>
                 <AvatarImage src="/Profile.svg" />
@@ -220,7 +233,7 @@ export default function ContohPage() {
         </div>
       </main>
       <section className="flex px-4 mt-6">
-        <div className="grid grid-cols-2 gap-6 mx-auto h-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mx-auto md:mx-0 lg:flex lg:items-center  h-full">
           {getFilteredTemplates().map((template) => (
             <WeddingTemplateCard
               key={template.id}
