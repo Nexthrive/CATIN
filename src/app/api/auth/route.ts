@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import prisma from "@/lib/prisma";
+import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET is not defined in environment variables");
+    }
+
     const body = await request.json();
     const { email, password } = body;
 
@@ -11,9 +16,9 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Email and Password must be filled out"
+          message: "Email and Password must be filled out",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -25,11 +30,11 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid email or password"
+          message: "Invalid email or password",
         },
         {
-          status: 401
-        }
+          status: 400,
+        },
       );
     }
 
@@ -39,16 +44,18 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid email or password"
+          message: "Invalid email or password",
         },
         {
-          status: 401
-        }
+          status: 400,
+        },
       );
     }
 
-    const jwt = require('jsonwebtoken');
-    const jwtToken = jwt.sign({ id: user.id_user, email: user.email }, process.env.JWT_SECRET);
+    const jwtToken = jwt.sign(
+      { id: user.id_user, email: user.email },
+      process.env.JWT_SECRET,
+    );
 
     return NextResponse.json(
       {
@@ -57,25 +64,23 @@ export async function POST(request: Request) {
         data: {
           id: user.id_user,
           email: user.email,
-          token: jwtToken
-        }
+          token: jwtToken,
+        },
       },
-    )
-
+      {
+        status: 200,
+      },
+    );
   } catch (error) {
     console.error("Login Error :", error);
     return NextResponse.json(
       {
-        success: false, 
-        message: "Internal server error"
+        success: false,
+        message: "Internal server error",
       },
       {
-        status: 500
-      }
-    )
+        status: 500,
+      },
+    );
   }
 }
-
-
-
-

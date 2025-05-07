@@ -123,7 +123,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/cey0/Documents/catin/src/generated/prisma",
+      "value": "/home/dobleh/Project/CATIN/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -132,12 +132,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "debian-openssl-1.1.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/cey0/Documents/catin/prisma/schema.prisma",
+    "sourceFilePath": "/home/dobleh/Project/CATIN/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -155,7 +155,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:postgres@localhost:5432/Catin?schema=public"
+        "value": "postgresql://postgres:postgres@localhost:5433/Catin?schema=public"
       }
     }
   },
