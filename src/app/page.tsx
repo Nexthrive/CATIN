@@ -101,42 +101,41 @@ export default function Home() {
             </div>
         </div>
       </main>
-      <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12 lg:px-24 md:py-60  lg:py-80">
-        <div className="flex flex-col gap-4 md:gap-6 lg:max-w-5xl lg:mx-auto lg:text-center">
-          <h2 className="font-semibold text-[32px] text-white md:text-4xl lg:text-7xl">
+      <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12  lg:px-54 md:py-60 lg:py-80">
+        <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-full lg:max-w-none">
+          <h2 className="font-semibold text-[32px] text-white md:text-4xl lg:text-6xl">
             How it{" "}
             <span className="underline decoration-[#6bcef5] decoration-2 underline-offset-4 lg:decoration-4">
               works
             </span>{" "}
             ?
           </h2>
-          <p className="font-[family-name:var(--font-poppins)] text-white text-xs max-w-[35ch] leading-5 md:text-sm md:max-w-[45ch] lg:text-xl lg:max-w-none">
+          <p className="font-[family-name:var(--font-poppins)] text-white text-xs max-w-[35ch] leading-5 md:text-sm md:max-w-[45ch] lg:text-xl lg:max-w-[60ch]">
             Catin helps you make the perfect invitation in 3 simple steps,
             here's how...
           </p>
         </div>
-        <div className="font-[family-name:var(--font-poppins)] mt-12 md:mt-16 lg:mt-24">
-        
-          <div className="flex items-center md:max-w-2xl md:mx-auto lg:hidden">
+        <div className="font-[family-name:var(--font-poppins)] mt-12 md:mt-16 lg:mt-24 w-full">
+          <div className="flex items-center">
             <Image
               src="/Pick.svg"
               width={175}
               height={175}
               alt="PickWeddingDesign"
-              className="md:w-[225px] md:h-[225px]"
+              className="md:w-[225px] md:h-[225px] lg:w-[275px] lg:h-[275px]"
             />
-            <div className="text-white flex flex-col gap-2 justify-center md:gap-4">
-              <h2 className="font-semibold text-2xl md:text-3xl">Pick !</h2>
-              <p className="text-xs leading-5 md:text-sm">
+            <div className="text-white flex flex-col gap-2 justify-center md:gap-4 lg:gap-6">
+              <h2 className="font-semibold text-2xl md:text-3xl lg:text-5xl">Pick !</h2>
+              <p className="text-xs leading-5 md:text-sm lg:text-lg lg:max-w-[35ch]">
                 Pick the design you like from the abundant of design that Catin
                 offers
               </p>
             </div>
           </div>
           
-          <div className="md:max-w-2xl md:mx-auto lg:hidden">
+          <div>
             <Image
-              className="mx-auto md:w-[350px]"
+              className="mx-auto md:w-[350px] lg:w-[400px]"
               src="/line1.svg"
               width={290.06}
               height={126}
@@ -144,10 +143,10 @@ export default function Home() {
             />
           </div>
           
-          <div className="flex items-center md:max-w-2xl md:justify-end md:mx-auto lg:hidden">
-            <div className="text-white flex flex-col gap-2 justify-center md:gap-4">
-              <h2 className="font-semibold text-2xl md:text-3xl">Customize !</h2>
-              <p className="text-xs leading-5 md:text-sm">
+          <div className="flex items-center md:justify-end">
+            <div className="text-white flex flex-col gap-2 text-right justify-center md:gap-4 lg:gap-6">
+              <h2 className="font-semibold text-2xl md:text-3xl lg:text-5xl">Customize !</h2>
+              <p className="text-xs leading-5 md:text-sm lg:text-lg lg:max-w-[35ch]">
                 Customize the design, bla bla someting bla bla make it yours
               </p>
             </div>
@@ -155,14 +154,14 @@ export default function Home() {
               src="/Customize.svg"
               width={175}
               height={175}
-              alt="OrderWeddingDesign"
-              className="md:w-[225px] md:h-[225px]"
+              alt="CustomizeWeddingDesign"
+              className="md:w-[225px] md:h-[225px] lg:w-[275px] lg:h-[275px]"
             />
           </div>
           
-          <div className="md:max-w-2xl md:mx-auto lg:hidden">
+          <div>
             <Image
-              className="mx-auto md:w-[350px]"
+              className="mx-auto md:w-[350px] lg:w-[400px]"
               src="/line2.svg"
               width={290.06}
               height={126}
@@ -170,93 +169,20 @@ export default function Home() {
             />
           </div>
           
-          <div className="flex items-center md:max-w-2xl md:mx-auto lg:hidden">
+          <div className="flex items-center">
             <Image
               src="/Order.svg"
               width={175}
               height={175}
               alt="OrderWeddingDesign"
-              className="md:w-[225px] md:h-[225px]"
+              className="md:w-[225px] md:h-[225px] lg:w-[275px] lg:h-[275px]"
             />
-            <div className="text-white flex flex-col gap-2 justify-center md:gap-4">
-              <h2 className="font-semibold text-2xl md:text-3xl">Order !</h2>
-              <p className="text-xs leading-5 md:text-sm">
+            <div className="text-white flex flex-col gap-2 justify-center md:gap-4 lg:gap-6">
+              <h2 className="font-semibold text-2xl md:text-3xl lg:text-5xl">Order !</h2>
+              <p className="text-xs leading-5 md:text-sm lg:text-lg lg:max-w-[35ch]">
                 Pick the design you like from the abundant of design that Catin
                 offers
               </p>
-            </div>
-          </div>
-          
-          {/* Desktop Layout (new) */}
-          <div className="hidden lg:flex lg:justify-between lg:items-start lg:max-w-6xl lg:mx-auto">
-            <div className="lg:flex lg:flex-col lg:items-center lg:w-1/3">
-              <Image
-                src="/Pick.svg"
-                width={275}
-                height={275}
-                alt="PickWeddingDesign"
-                className="lg:w-[275px] lg:h-[275px]"
-              />
-              <div className="text-white flex flex-col gap-4 justify-center text-center mt-6">
-                <h2 className="font-semibold text-4xl">Pick !</h2>
-                <p className="text-base max-w-[30ch]">
-                  Pick the design you like from the abundant of design that Catin
-                  offers
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-center">
-              <Image
-                src="/line1.svg"
-                width={100}
-                height={50}
-                alt="DirectionalLine"
-                className="rotate-90 mt-32"
-              />
-            </div>
-            
-            <div className="lg:flex lg:flex-col lg:items-center lg:w-1/3">
-              <Image
-                src="/Customize.svg"
-                width={275}
-                height={275}
-                alt="CustomizeWeddingDesign"
-                className="lg:w-[275px] lg:h-[275px]"
-              />
-              <div className="text-white flex flex-col gap-4 justify-center text-center mt-6">
-                <h2 className="font-semibold text-4xl">Customize !</h2>
-                <p className="text-base max-w-[30ch]">
-                  Customize the design, bla bla someting bla bla make it yours
-                </p>
-              </div>
-            </div>
-            
-            <div className="flex items-center">
-              <Image
-                src="/line2.svg"
-                width={100}
-                height={50}
-                alt="DirectionalLine2"
-                className="rotate-90 mt-32"
-              />
-            </div>
-            
-            <div className="lg:flex lg:flex-col lg:items-center lg:w-1/3">
-              <Image
-                src="/Order.svg"
-                width={275}
-                height={275}
-                alt="OrderWeddingDesign"
-                className="lg:w-[275px] lg:h-[275px]"
-              />
-              <div className="text-white flex flex-col gap-4 justify-center text-center mt-6">
-                <h2 className="font-semibold text-4xl">Order !</h2>
-                <p className="text-base max-w-[30ch]">
-                  Pick the design you like from the abundant of design that Catin
-                  offers
-                </p>
-              </div>
             </div>
           </div>
         </div>
