@@ -61,13 +61,13 @@ export default function Home() {
           </div>
         </nav>
       </header>
-      <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24 lg:min-h-[520px]">
+      <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24  lg:min-h-[520px]">
         <div className="flex justify-center items-center flex-col gap-8 md:gap-12 lg:flex-row lg:w-full lg:mx-10 lg:gap-0">
           <div className="flex flex-col items-center lg:items-start lg:w-1/2">
             <h1 className="font-semibold text-[#171717] text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:text-6xl lg:text-left lg:max-w-[30ch]">
               The only tool you need to craft perfect wedding invitations!
             </h1>
-            <div className="flex flex-col justify-center items-center gap-4 mt-8 lg:items-start">
+            <div className="hidden lg:flex flex-col justify-center items-center gap-4 mt-8 lg:items-start">
               <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3 md:text-lg">
                 Catin is here to help you...
               </p>
@@ -88,6 +88,17 @@ export default function Home() {
               className="md:w-[300px] md:h-[296px] lg:w-[400px] lg:h-[396px]"
             />
           </div>
+          <div className=" flex lg:hidden flex-col justify-center items-center gap-4 lg:items-start">
+              <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3 md:text-lg">
+                Catin is here to help you...
+              </p>
+              <Button
+                className="rounded-full py-3 px-6 bg-[#171717] text-white font-[family-name:var(--font-poppins)] text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
+                asChild
+              >
+                <Link href={"/design"}>Explore designs</Link>
+              </Button>
+            </div>
         </div>
       </main>
       <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12 lg:px-24 md:py-60  lg:py-80">
@@ -105,7 +116,7 @@ export default function Home() {
           </p>
         </div>
         <div className="font-[family-name:var(--font-poppins)] mt-12 md:mt-16 lg:mt-24">
-          {/* Mobile and Tablet Layout (unchanged) */}
+        
           <div className="flex items-center md:max-w-2xl md:mx-auto lg:hidden">
             <Image
               src="/Pick.svg"
