@@ -119,9 +119,21 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id_user: 'id_user',
-  email: 'email',
   name: 'name',
+  email: 'email',
   password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TamuScalarFieldEnum = {
+  ID_Undangan: 'ID_Undangan',
+  Nama_tamu: 'Nama_tamu',
+  Email: 'Email',
+  No_hp: 'No_hp',
+  Alamat: 'Alamat',
+  Hadir: 'Hadir',
+  Kode_token: 'Kode_token',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -131,14 +143,26 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  id_user: 'id_user',
+  name: 'name',
+  email: 'email',
+  password: 'password'
+};
+
+exports.Prisma.TamuOrderByRelevanceFieldEnum = {
+  ID_Undangan: 'ID_Undangan',
+  Nama_tamu: 'Nama_tamu',
+  Email: 'Email',
+  No_hp: 'No_hp',
+  Alamat: 'Alamat',
+  Kode_token: 'Kode_token'
 };
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Tamu: 'Tamu'
 };
 
 /**
