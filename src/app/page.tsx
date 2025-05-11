@@ -1,103 +1,192 @@
 import Image from "next/image";
-
+import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="font-[family-name:var(--font-outfit)]">
+      <header>
+        <nav>
+          <div className="flex flex-row py-16 justify-between px-4 md:px-12 lg:px-24">
+            <div className="flex md:hidden items-center">
+              <Sheet>
+                <SheetTrigger className="md:hidden">
+                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader className="flex flex-col gap-10">
+                    <SheetTitle className="text-2xl font-bold">CATIN</SheetTitle>
+                    <SheetDescription className="flex flex-col gap-4">
+                      <Link className="font-medium text-xl text-black" href="/">
+                        Home
+                      </Link>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+                      <Link
+                        className="font-medium text-xl text-black"
+                        href="/design"
+                      >
+                        Designs
+                      </Link>
+                    </SheetDescription>
+                  </SheetHeader>
+                </SheetContent>
+              </Sheet>
+
+            </div>
+              <Image src="/Catin.svg" width={48} height={48} alt="Logo" className="md:ml-0" />
+            
+            <div className="hidden md:flex items-center space-x-8">
+              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/">
+                Home
+              </Link>
+              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/design">
+                Designs
+              </Link>
+            </div>
+            
+            <button>
+              <Avatar>
+                <AvatarImage src="/Profile.svg" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </button>
+          </div>
+        </nav>
+      </header>
+      <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24  lg:min-h-[520px]">
+        <div className="flex justify-center items-center flex-col gap-8 md:gap-12 lg:flex-row lg:w-full lg:mx-10 lg:gap-0">
+          <div className="flex flex-col items-center lg:items-start lg:w-1/2">
+            <h1 className="font-semibold text-[#171717] text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:text-6xl lg:text-left lg:max-w-[30ch]">
+              The only tool you need to craft perfect wedding invitations!
+            </h1>
+            <div className="hidden lg:flex flex-col justify-center items-center gap-4 mt-8 lg:items-start">
+              <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3 md:text-lg">
+                Catin is here to help you...
+              </p>
+              <Button
+                className="rounded-full py-3 px-6 bg-[#171717] text-white font-[family-name:var(--font-poppins)] text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
+                asChild
+              >
+                <Link href={"/design"}>Explore designs</Link>
+              </Button>
+            </div>
+          </div>
+          <div className=" ">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/4Rectangles.svg"
+              width={251}
+              height={248}
+              alt="WeddingRectangles"
+              className="md:w-[300px] md:h-[296px] lg:w-[400px] lg:h-[396px]"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <div className=" flex lg:hidden flex-col justify-center items-center gap-4 lg:items-start">
+              <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3 md:text-lg">
+                Catin is here to help you...
+              </p>
+              <Button
+                className="rounded-full py-3 px-6 bg-[#171717] text-white font-[family-name:var(--font-poppins)] text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
+                asChild
+              >
+                <Link href={"/design"}>Explore designs</Link>
+              </Button>
+            </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12  lg:px-54 md:py-60 lg:py-80">
+        <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-full lg:max-w-none">
+          <h2 className="font-semibold text-[32px] text-white md:text-4xl lg:text-6xl">
+            How it{" "}
+            <span className="underline decoration-[#6bcef5] decoration-2 underline-offset-4 lg:decoration-4">
+              works
+            </span>{" "}
+            ?
+          </h2>
+          <p className="font-[family-name:var(--font-poppins)] text-white text-xs max-w-[35ch] leading-5 md:text-sm md:max-w-[45ch] lg:text-xl lg:max-w-[60ch]">
+            Catin helps you make the perfect invitation in 3 simple steps,
+            here's how...
+          </p>
+        </div>
+        <div className="font-[family-name:var(--font-poppins)] mt-12 md:mt-16 lg:mt-24 w-full">
+          <div className="flex items-center">
+            <Image
+              src="/Pick.svg"
+              width={175}
+              height={175}
+              alt="PickWeddingDesign"
+              className="md:w-[225px] md:h-[225px] lg:w-[275px] lg:h-[275px]"
+            />
+            <div className="text-white flex flex-col gap-2 justify-center md:gap-4 lg:gap-6">
+              <h2 className="font-semibold text-2xl md:text-3xl lg:text-5xl">Pick !</h2>
+              <p className="text-xs leading-5 md:text-sm lg:text-lg lg:max-w-[35ch]">
+                Pick the design you like from the abundant of design that Catin
+                offers
+              </p>
+            </div>
+          </div>
+          
+          <div>
+            <Image
+              className="mx-auto md:w-[350px] lg:w-[400px]"
+              src="/line1.svg"
+              width={290.06}
+              height={126}
+              alt="DirectionalLine"
+            />
+          </div>
+          
+          <div className="flex items-center md:justify-end">
+            <div className="text-white flex flex-col gap-2 text-right justify-center md:gap-4 lg:gap-6">
+              <h2 className="font-semibold text-2xl md:text-3xl lg:text-5xl">Customize !</h2>
+              <p className="text-xs leading-5 md:text-sm lg:text-lg lg:max-w-[35ch]">
+                Customize the design, bla bla someting bla bla make it yours
+              </p>
+            </div>
+            <Image
+              src="/Customize.svg"
+              width={175}
+              height={175}
+              alt="CustomizeWeddingDesign"
+              className="md:w-[225px] md:h-[225px] lg:w-[275px] lg:h-[275px]"
+            />
+          </div>
+          
+          <div>
+            <Image
+              className="mx-auto md:w-[350px] lg:w-[400px]"
+              src="/line2.svg"
+              width={290.06}
+              height={126}
+              alt="DirectionalLine2"
+            />
+          </div>
+          
+          <div className="flex items-center">
+            <Image
+              src="/Order.svg"
+              width={175}
+              height={175}
+              alt="OrderWeddingDesign"
+              className="md:w-[225px] md:h-[225px] lg:w-[275px] lg:h-[275px]"
+            />
+            <div className="text-white flex flex-col gap-2 justify-center md:gap-4 lg:gap-6">
+              <h2 className="font-semibold text-2xl md:text-3xl lg:text-5xl">Order !</h2>
+              <p className="text-xs leading-5 md:text-sm lg:text-lg lg:max-w-[35ch]">
+                Pick the design you like from the abundant of design that Catin
+                offers
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

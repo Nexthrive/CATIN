@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 
 interface User {
@@ -17,16 +17,16 @@ export default function ContohPage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/api/user');
+        const response = await fetch("/api/user");
         const data = await response.json();
-        
+
         if (data.succes) {
           setUsers(data.data);
         } else {
           setError(data.message);
         }
       } catch (err) {
-        setError('Terjadi kesalahan saat mengambil data');
+        setError("Terjadi kesalahan saat mengambil data");
       } finally {
         setLoading(false);
       }
@@ -36,11 +36,19 @@ export default function ContohPage() {
   }, []);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="min-h-screen flex items-center justify-center text-red-500">{error}</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500">
+        {error}
+      </div>
+    );
   }
 
   return (
@@ -52,8 +60,13 @@ export default function ContohPage() {
             <h2 className="font-semibold">{user.name}</h2>
             <p className="text-gray-600">{user.email}</p>
             <div className="text-sm text-gray-500 mt-2">
-              <p>Dibuat: {new Date(user.createdAt).toLocaleDateString('id-ID')}</p>
-              <p>Diperbarui: {new Date(user.updatedAt).toLocaleDateString('id-ID')}</p>
+              <p>
+                Dibuat: {new Date(user.createdAt).toLocaleDateString("id-ID")}
+              </p>
+              <p>
+                Diperbarui:{" "}
+                {new Date(user.updatedAt).toLocaleDateString("id-ID")}
+              </p>
             </div>
           </div>
         ))}

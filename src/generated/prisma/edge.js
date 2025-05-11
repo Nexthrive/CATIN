@@ -147,7 +147,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/cey0/Documents/catin/src/generated/prisma",
+      "value": "C:\\Github\\CATIN\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -156,12 +156,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/cey0/Documents/catin/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Github\\CATIN\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
