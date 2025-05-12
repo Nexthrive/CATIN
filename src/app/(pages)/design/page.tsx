@@ -73,6 +73,62 @@ export default function ContohPage() {
       usageCount: 1028,
       linkTo: "/preview",
     },
+    {
+      id: "template6",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
+    {
+      id: "template7",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
+    {
+      id: "template8",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
+    {
+      id: "template9",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
+    {
+      id: "template10",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
+    {
+      id: "template11",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
+    {
+      id: "template12",
+      title: "Jawa X Sunda",
+      imagePath: "WeddingTemplate.jpg",
+      createdAt: new Date("2023-05-15"),
+      usageCount: 1028,
+      linkTo: "/preview",
+    },
   ];
 
   // This function filters templates based on the active button category
@@ -163,7 +219,7 @@ export default function ContohPage() {
           </div>
         </nav>
       </header>
-      <main className="flex px-4">
+      <main className="flex px-4 sm:px-24">
         <div className="flex flex-col  w-full gap-6">
           <div className="">
             <h1 className="font-semibold text-[#171717] text-left text-[32px] tracking-tight leading-none ">
@@ -232,8 +288,8 @@ export default function ContohPage() {
           </div>
         </div>
       </main>
-      <section className="flex px-4 mt-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mx-auto md:mx-0 lg:flex lg:items-center  h-full">
+      <section className="flex px-4 sm:px-24 lg:w-full mt-6">
+        <div className="grid grid-cols-2 mx-auto  sm:flex sm:flex-wrap sm:justify-start  gap-6 md:gap-8 lg:gap-10">
           {getFilteredTemplates().map((template) => (
             <WeddingTemplateCard
               key={template.id}
