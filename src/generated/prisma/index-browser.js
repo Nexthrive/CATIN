@@ -126,6 +126,15 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AdminScalarFieldEnum = {
+  id_admin: 'id_admin',
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.TamuScalarFieldEnum = {
   ID_Undangan: 'ID_Undangan',
   Nama_tamu: 'Nama_tamu',
@@ -150,6 +159,13 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.AdminOrderByRelevanceFieldEnum = {
+  id_admin: 'id_admin',
+  name: 'name',
+  email: 'email',
+  password: 'password'
+};
+
 exports.Prisma.TamuOrderByRelevanceFieldEnum = {
   ID_Undangan: 'ID_Undangan',
   Nama_tamu: 'Nama_tamu',
@@ -162,6 +178,7 @@ exports.Prisma.TamuOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Admin: 'Admin',
   Tamu: 'Tamu'
 };
 
