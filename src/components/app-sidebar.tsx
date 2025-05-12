@@ -1,4 +1,4 @@
-import { Calendar, Home, ChartLine,Hexagon, ImageIcon, Layers } from "lucide-react"
+import { LogOut,Hexagon, ImageIcon, Layers } from "lucide-react"
 import Image from "next/image"
 import {
   Sidebar,
@@ -66,9 +66,9 @@ const items3 = [
 export function AppSidebar() {
   return (
     
-    <Sidebar side="left" className="fixed bg-white w-[280px] font-[family-name:var(--font-poppins)]">
-      <SidebarContent className="bg-white">
-        <SidebarGroup className="bg-white p-0">
+    <Sidebar side="left" className="fixed h-full bg-white w-[280px] font-[family-name:var(--font-poppins)]">
+      <SidebarContent className="bg-white h-full block">
+        <SidebarGroup className="bg-white h-full block  p-0">
           <div className="flex py-8 pl-8 border-b">
             <div className="bg-[#4318D1] p-2 flex h-fit w-fit rounded-md justify-center">
               <Image src="/CatinAdminLogo.svg" className="" width={15} height={15} alt="CatinAdmin"/>
@@ -76,12 +76,13 @@ export function AppSidebar() {
             <SidebarGroupLabel className="font-[family-name:var(--font-poppins)] text-black leading-[30px] px-3 font-bold text-xl">
            Catin Admin</SidebarGroupLabel>
           </div>
+          <div className="">
           <SidebarGroupContent className="p-4">
             <SidebarMenu className="gap-1">
               <p className="leading-[18px] ml-3 tracking-wider font-medium text-[#9291A5] text-xs mb-1">MAIN</p>
               {items.map((item) => (
                 <SidebarMenuItem className={item.active ? "bg-[#F5F1FF] rounded-sm pl-3 py-2 pr-2" : "pl-3 py-2 pr-2 rounded-sm hover:bg-zinc-400/40"} key={item.title}>
-                  <SidebarMenuButton className="p-0 hover:bg-transparent" asChild>
+                  <SidebarMenuButton className="p-0 hover:bg-transparent " asChild>
                     <a href={item.url}>
                     
                         <Image src={item.image} width={20} height={20} alt={`${item.title} icon`} />
@@ -123,6 +124,20 @@ export function AppSidebar() {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
+          <SidebarGroupContent 
+          className="p-[29px] border-t border-t-[#E5E5EF] absolute bottom-0 w-full">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-3 items-center">
+            <Image src="/40PXTemplate.svg" className="rounded-full" width={32} height={32} alt="Template"/>
+            <div className="">
+                <p className="text-[#1E1B39] leading-[21px] font-medium text-sm">Admin User</p>
+                <p className="text-[#9291A5] leading-[18px] font-normal text-xs">admin@catin.io</p>
+              </div>
+            </div>
+            <LogOut/>
+            </div>
+          </SidebarGroupContent>
+          </div>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
