@@ -1,14 +1,16 @@
+version: '3'
 services:
-  postgres:
-    image: postgres:15-alpine  # or use your custom Dockerfile
+  mysql:
+    image: mysql:latest
     ports:
-      - "5432:5432"  # Map host port 5433 → container port 5432
+      - "3305:3306"  # Map host port 3306 → container port 3306
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: Catin
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: Catin
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: Catin
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
 
 volumes:
-  postgres_data:
+  mysql_data:
