@@ -58,15 +58,15 @@ export default function AdminPage({ children }: { children: React.ReactNode }) {
               <div className="flex gap-6 justify-around">
                 <div className="border p-[25px] flex flex-col gap-2 w-[80%] border-[#E5E5EF] rounded-md">
                   <p className="text-[#9291A5] leading-[21px] text-sm  font-normal">Total Revenue</p>
-                  <h1 className="leading-12 font-semibold text-[32px] text-[#1E1B39]">$2.5M</h1>
+                  <h1 className="leading-12 font-semibold text-[32px] text-[#1E1B39]">Rp. 2.5M</h1>
                   <div className="flex items-start gap-3">
                   <Image src="/UpGreen.svg" className="pt-1.5" width={8} height={4} alt="UpGreen"/>
                   <p className="text-[#22C55E] leading-[21px] font-normal text-sm">12.5%</p>
                   </div>
                 </div>
                 <div className="border p-[25px] flex flex-col gap-2 w-[80%] border-[#E5E5EF] rounded-md">
-                  <p className="text-[#9291A5] leading-[21px] text-sm  font-normal">Total Revenue</p>
-                  <h1 className="leading-12 font-semibold text-[32px] text-[#1E1B39]">$2.5M</h1>
+                  <p className="text-[#9291A5] leading-[21px] text-sm  font-normal">Total Users</p>
+                  <h1 className="leading-12 font-semibold text-[32px] text-[#1E1B39]">12,500</h1>
                   <div className="flex items-start gap-3">
                   <Image src="/UpGreen.svg" className="pt-1.5" width={8} height={4} alt="UpGreen"/>
                   <p className="text-[#22C55E] leading-[21px] font-normal text-sm">12.5%</p>
@@ -74,8 +74,8 @@ export default function AdminPage({ children }: { children: React.ReactNode }) {
                   </div>
                 </div>
                 <div className="border p-[25px] flex flex-col gap-2 w-[80%] border-[#E5E5EF] rounded-md">
-                  <p className="text-[#9291A5] leading-[21px] text-sm  font-normal">Total Revenue</p>
-                  <h1 className="leading-12 font-semibold text-[32px] text-[#1E1B39]">$2.5M</h1>
+                  <p className="text-[#9291A5] leading-[21px] text-sm  font-normal">Total Orders</p>
+                  <h1 className="leading-12 font-semibold text-[32px] text-[#1E1B39]">8,900</h1>
                   <div className="flex items-end gap-3">
                   <Image src="/DownRed.svg" className="pb-2" width={8} height={4} alt="DownRed"/>
                   <p className="text-[#EF4444] leading-[21px] font-normal text-sm">3.1%</p>
@@ -98,7 +98,7 @@ export default function AdminPage({ children }: { children: React.ReactNode }) {
                         <p className="text-[#9291A5] leading-[18px] font-normal text-xs">2 minutes ago</p>
                       </div>
                     </div>
-                    <p className="text-[#1E1B39] leading-[21px] font-medium text-sm">$59.00</p>
+                    <p className="text-[#1E1B39] leading-[21px] font-medium text-sm">Rp. 974k</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex gap-3 items-center">
@@ -108,7 +108,7 @@ export default function AdminPage({ children }: { children: React.ReactNode }) {
                         <p className="text-[#9291A5] leading-[18px] font-normal text-xs">5 minutes ago</p>
                       </div>
                     </div>
-                    <p className="text-[#1E1B39] leading-[21px] font-medium text-sm">$29.00</p>
+                    <p className="text-[#1E1B39] leading-[21px] font-medium text-sm">Rp. 479k</p>
                   </div>
                   </div>
                   
