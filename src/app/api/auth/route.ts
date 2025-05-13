@@ -47,7 +47,7 @@ export async function POST(request: Request) {
 
     if (!user) {
       return NextResponse.json(
-        { success: false, message: "Invalid email or password" },
+        { success: false, message: "Invalid email" },
         { status: 400 },
       );
     }
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
 
     if (!passwordMatch) {
       return NextResponse.json(
-        { success: false, message: "Invalid email or password" },
+        { success: false, message: "Invalid Password" },
         { status: 400 },
       );
     }
