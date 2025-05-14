@@ -8,7 +8,7 @@ export async function authPageMiddleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   if (!token) {
-    const loginUrl = new URL('/login', request.url)
+    const loginUrl = new URL('/auth', request.url)
     loginUrl.searchParams.set('from', pathname)
     return NextResponse.redirect(loginUrl)
   }
@@ -17,7 +17,7 @@ export async function authPageMiddleware(request: NextRequest) {
     await jose.jwtVerify(token, new TextEncoder().encode(secret))
     return NextResponse.next()
   } catch {
-    const loginUrl = new URL('/login', request.url)
+    const loginUrl = new URL('/auth', request.url)
     loginUrl.searchParams.set('from', pathname)
     return NextResponse.redirect(loginUrl)
   }

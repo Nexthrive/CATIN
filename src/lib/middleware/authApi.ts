@@ -12,9 +12,9 @@ interface TokenPayload extends jose.JWTPayload {
 
 export async function verifyToken(request: NextRequest) {
   const pathname = request.nextUrl.pathname
-  
+
   const isAdminRoute = pathname === '/api/admin' || pathname.startsWith('/api/admin/')
-  
+
   const token = request.headers.get('authorization')?.split(' ')[1]
 
   if (!token) {
@@ -26,7 +26,7 @@ export async function verifyToken(request: NextRequest) {
 
   try {
     const { payload } = await jose.jwtVerify(token, new TextEncoder().encode(secret)) as { payload: TokenPayload }
-    
+
     // For any admin routes, verify the role is admin
     if (isAdminRoute && payload.role !== 'admin') {
       return NextResponse.json(

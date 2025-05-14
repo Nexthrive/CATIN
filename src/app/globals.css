@@ -112,6 +112,13 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+@theme {
+  --font-poppins: Poppins, sans-serif;
+  --color-washedC-100: #F5F6FC;
+  --color-greyC-100: #C1C5E2;
+  --color-greyerC-100: #868687;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
