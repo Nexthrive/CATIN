@@ -23,7 +23,7 @@ export default function Home() {
     });
   }, []);
   return (
-    <div className="font-[family-name:var(--font-outfit)]  h-full">
+    <div className="font-outfit  h-full">
       {/* <header>
         <nav className="">
           <div className="flex  fixed  w-full flex-row py-16 justify-between px-4">
@@ -64,12 +64,12 @@ export default function Home() {
         <div
           ref={bottomNavRef}
           style={{ visibility: "hidden" }}
-          className="bg-[#171717] absolute flex justify-between items-center bottom-8 w-[90%] rounded-xl pl-4 pr-6 py-4"
+          className="bg-lightblack-100 absolute flex justify-between items-center bottom-8 w-[90%] rounded-xl pl-4 pr-6 py-4"
         >
           <div className="flex items-center gap-3">
             <Button
               asChild
-              className="bg-[#FFFFFF] hover:text-white text-xs font-[family-name:var(--font-poppins)] font-medium text-black group"
+              className="bg-[#FFFFFF] hover:text-white text-xs font-poppins font-medium text-black group"
             >
               <Link href={"/customize"}>
                 Make it yours

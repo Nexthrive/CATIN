@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sheet";
 export default function Home() {
   return (
-    <div className="font-[family-name:var(--font-outfit)]">
+    <div className="font-outfit">
       <header>
         <nav>
           <div className="flex flex-row py-16 justify-between px-4 md:px-12 lg:px-24">
@@ -64,15 +64,15 @@ export default function Home() {
       <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24  lg:min-h-[520px]">
         <div className="flex justify-center items-center flex-col gap-8 md:gap-12 lg:flex-row lg:w-full lg:mx-10 lg:gap-0">
           <div className="flex flex-col items-center lg:items-start lg:w-1/2">
-            <h1 className="font-semibold text-[#171717] text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:text-6xl lg:text-left lg:max-w-[30ch]">
+            <h1 className="font-semibold text-lightblack-100 text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:text-6xl lg:text-left lg:max-w-[30ch]">
               The only tool you need to craft perfect wedding invitations!
             </h1>
             <div className="hidden lg:flex flex-col justify-center items-center gap-4 mt-8 lg:items-start">
-              <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3 md:text-lg">
+              <p className="text-black font-poppins font-medium leading-3 md:text-lg">
                 Catin is here to help you...
               </p>
               <Button
-                className="rounded-full py-3 px-6 bg-[#171717] text-white font-[family-name:var(--font-poppins)] text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
+                className="rounded-full py-3 px-6 bg-lightblack-100 text-white font-poppins text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
                 asChild
               >
                 <Link href={"/design"}>Explore designs</Link>
@@ -89,11 +89,11 @@ export default function Home() {
             />
           </div>
           <div className=" flex lg:hidden flex-col justify-center items-center gap-4 lg:items-start">
-              <p className="text-black font-[family-name:var(--font-poppins)] font-medium leading-3 md:text-lg">
+              <p className="text-black font-poppins font-medium leading-3 md:text-lg">
                 Catin is here to help you...
               </p>
               <Button
-                className="rounded-full py-3 px-6 bg-[#171717] text-white font-[family-name:var(--font-poppins)] text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
+                className="rounded-full py-3 px-6 bg-lightblack-100 text-white font-poppins text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
                 asChild
               >
                 <Link href={"/design"}>Explore designs</Link>
@@ -110,12 +110,12 @@ export default function Home() {
             </span>{" "}
             ?
           </h2>
-          <p className="font-[family-name:var(--font-poppins)] text-white text-xs max-w-[35ch] leading-5 md:text-sm md:max-w-[45ch] lg:text-xl lg:max-w-[60ch]">
+          <p className="font-poppins text-white text-xs max-w-[35ch] leading-5 md:text-sm md:max-w-[45ch] lg:text-xl lg:max-w-[60ch]">
             Catin helps you make the perfect invitation in 3 simple steps,
             here's how...
           </p>
         </div>
-        <div className="font-[family-name:var(--font-poppins)] mt-12 md:mt-16 lg:mt-24 w-full">
+        <div className="font-poppins mt-12 md:mt-16 lg:mt-24 w-full">
           <div className="flex items-center">
             <Image
               src="/Pick.svg"
