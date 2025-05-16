@@ -23,15 +23,13 @@ const data = [
   { month: "DEC", productSales: 10000, subscriptionSales: 300000, otherSales: 30000 },
 ]
 
-export default function AdminPage({ children }: { children: React.ReactNode }) {
-
+export default function AdminPage() {
   const [filters, setFilters] = useState({
     productSales: true,
     subscriptionSales: true,
     otherSales: true
   });
   
-
   const toggleFilter = (filterName: keyof typeof filters) => {
     setFilters(prev => ({
       ...prev,
@@ -39,28 +37,23 @@ export default function AdminPage({ children }: { children: React.ReactNode }) {
     }));
   };
 
-  
- 
-
   return (
-<div className="flex justify-between">
-
-    <SidebarProvider className="w-fit">
-      <AppSidebar />
-    </SidebarProvider>
-  
-    
-    <div className="flex  xl:hidden fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-        <h2 className="text-xl font-semibold text-gray-900">Screen Size Notice</h2>
-        <p className="mt-2 text-gray-600">This content cannot be viewed on this screen size</p>
+    <div className="flex justify-between">
+      <SidebarProvider className="w-fit">
+        <AppSidebar />
+      </SidebarProvider>
+      
+      <div className="flex  xl:hidden fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+          <h2 className="text-xl font-semibold text-gray-900">Screen Size Notice</h2>
+          <p className="mt-2 text-gray-600">This content cannot be viewed on this screen size</p>
+        </div>
       </div>
-    </div>
-    <div className={`container bg-[#F8F8F8] px-5 pl-7 py-[54px] gap-8 flex flex-col font-poppins`}>
+      <div className={`container bg-[#F8F8F8] px-5 pl-7 py-[54px] gap-8 flex flex-col font-poppins`}>
         <div className="flex justify-between items-center">
             <div className="flex flex-col gap-2">
                 <h1 className="leading-10 tracking-tighter font-bold text-[40px]">Hello Admin!</h1>
-                <p className="leading-8 text-base font-normal text-[#848484]">Track the performance of Catin’s template at a glance!</p>
+                <p className="leading-8 text-base font-normal text-[#848484]">Track the performance of Catin's template at a glance!</p>
             </div>
             <div className="flex items-center gap-2">
                 <p className="leading-8 font-medium text-base">{new Date().toLocaleDateString('en-UK', { 

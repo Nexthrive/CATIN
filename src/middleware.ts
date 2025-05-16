@@ -38,7 +38,6 @@ export const config = {
     
     // Frontend pages
     '/dashboard/:path*',
-    '/admin/:path*',
     '/',
   ],
 }
