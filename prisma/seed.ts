@@ -11,10 +11,26 @@ const userData: Prisma.UserCreateInput[] = [
     password: bcrypt.hashSync("nadra", 10),
   },
 ];
+const templateData: Prisma.TemplateCreateInput[] = [
+  {
+  ID_Template : "asdasdas",
+  Lokasi_Template : "example", 
+  Nama_Template : "MODERN",
+  Tema : "ADAT JAWA X SUNDA",
+  Deskripsi_Template : "EXAMPLE",
+  Thumbnail : Buffer.from("example image data"),
+  FIle: "example",
+  PhotoAmount: 5,
+},
+]
 
 export async function main() {
   for (const u of userData) {
     await prisma.user.create({ data: u })
+  }
+
+  for (const t of templateData) {
+    await prisma.template.create({ data: t })
   }
 }
 

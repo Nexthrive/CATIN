@@ -147,6 +147,18 @@ exports.Prisma.TamuScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.TemplateScalarFieldEnum = {
+  ID_Template: 'ID_Template',
+  Nama_Template: 'Nama_Template',
+  Lokasi_Template: 'Lokasi_Template',
+  Deskripsi_Template: 'Deskripsi_Template',
+  Thumbnail: 'Thumbnail',
+  Status: 'Status',
+  Tema: 'Tema',
+  FIle: 'FIle',
+  PhotoAmount: 'PhotoAmount'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -175,11 +187,21 @@ exports.Prisma.TamuOrderByRelevanceFieldEnum = {
   Kode_token: 'Kode_token'
 };
 
+exports.Prisma.TemplateOrderByRelevanceFieldEnum = {
+  ID_Template: 'ID_Template',
+  Nama_Template: 'Nama_Template',
+  Lokasi_Template: 'Lokasi_Template',
+  Deskripsi_Template: 'Deskripsi_Template',
+  Tema: 'Tema',
+  FIle: 'FIle'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
   Admin: 'Admin',
-  Tamu: 'Tamu'
+  Tamu: 'Tamu',
+  Template: 'Template'
 };
 
 /**
