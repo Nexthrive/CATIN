@@ -14,7 +14,7 @@ export async function GET() {
         data: User,
       },
       {
-        status: 201,
+        status: 200,
       }
     );
   } catch (error) {

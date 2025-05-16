@@ -1,199 +1,189 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from "bcrypt";
 import { prisma } from "@/lib/prisma";
 
-// GET single admin by ID
+// GET handler
 export async function GET(
-  request: Request,
-  { params }: { params: { id_admin: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id_admin: string }> }
 ) {
+  const params = await context.params;
+  const { id_admin } = params;
+  
+  // Validasi ID
+  if (!id_admin) {
+    return NextResponse.json(
+      { success: false, message: "Invalid admin ID" },
+      { status: 400 }
+    );
+  }
+  
   try {
     const admin = await prisma.admin.findUnique({
-      where: { id_admin: params.id_admin },
+      where: { id_admin },
+      select: {
+        id_admin: true,
+        name: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true,
+      }
     });
 
     if (!admin) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Admin not found",
-        },
-        {
-          status: 404,
-        }
+        { success: false, message: "Admin not found" },
+        { status: 404 }
       );
     }
 
-    // Remove password from response
-    const { password, ...adminWithoutPassword } = admin;
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Admin data retrieved successfully",
-        data: adminWithoutPassword,
-      },
-      {
-        status: 200,
-      }
-    );
+    return NextResponse.json({
+      success: true,
+      message: "Admin data retrieved successfully",
+      data: admin,
+    });
   } catch (error) {
-    console.error("Error details:", error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Error retrieving admin data",
-        error:
-          error instanceof Error
-            ? error.message
-            : "An unknown error occurred. Please try again or contact support.",
-      },
-      {
-        status: 500,
-      }
-    );
+    return NextResponse.json({
+      success: false,
+      message: "Error retrieving admin data",
+      error: error instanceof Error ? error.message : "Unknown error",
+    }, { status: 500 });
   }
 }
 
-// UPDATE admin by ID
+// PUT handler
 export async function PUT(
-  request: Request,
-  { params }: { params: { id_admin: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id_admin: string }> }
 ) {
+  const params = await context.params;
+  const { id_admin } = params;
+  
+  // Validasi ID
+  if (!id_admin) {
+    return NextResponse.json(
+      { success: false, message: "Invalid admin ID" },
+      { status: 400 }
+    );
+  }
+  
   try {
     const body = await request.json();
+    
+    // Validasi body
+    if (!body || typeof body !== 'object') {
+      return NextResponse.json({
+        success: false, 
+        message: "Invalid request body"
+      }, { status: 400 });
+    }
 
-    // Check if admin exists
     const existingAdmin = await prisma.admin.findUnique({
-      where: { id_admin: params.id_admin },
+      where: { id_admin },
     });
 
     if (!existingAdmin) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Admin not found",
-        },
-        {
-          status: 404,
-        }
-      );
+      return NextResponse.json({ 
+        success: false, 
+        message: "Admin not found" 
+      }, { status: 404 });
     }
 
-    // If password is being updated, hash the new password
-    let hashedPassword = existingAdmin.password;
-    if (body.password) {
-      const saltRounds = 10;
-      hashedPassword = await bcrypt.hash(body.password, saltRounds);
+    // Persiapkan data update
+    const updateData: any = {};
+    
+    // Update nama jika ada
+    if (body.name) {
+      updateData.name = body.name;
     }
-
-    // Check if new email already exists (if it's being changed)
+    
+    // Update email jika ada dan validasi email unik
     if (body.email && body.email !== existingAdmin.email) {
       const emailExists = await prisma.admin.findUnique({
         where: { email: body.email },
       });
 
       if (emailExists) {
-        return NextResponse.json(
-          {
-            success: false,
-            message: "Email already in use by another admin",
-          },
-          {
-            status: 409,
-          }
-        );
+        return NextResponse.json({ 
+          success: false, 
+          message: "Email already in use" 
+        }, { status: 409 });
       }
+      
+      updateData.email = body.email;
+    }
+    
+    // Update password jika ada
+    if (body.password) {
+      updateData.password = await bcrypt.hash(body.password, 10);
     }
 
     // Update admin
     const updatedAdmin = await prisma.admin.update({
-      where: { id_admin: params.id_admin },
-      data: {
-        name: body.name || existingAdmin.name,
-        email: body.email || existingAdmin.email,
-        password: hashedPassword,
-      },
+      where: { id_admin },
+      data: updateData,
+      select: {
+        id_admin: true,
+        name: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true,
+      }
     });
 
-    // Remove password from response
-    const { password, ...adminWithoutPassword } = updatedAdmin;
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Admin updated successfully",
-        data: adminWithoutPassword,
-      },
-      {
-        status: 200,
-      }
-    );
+    return NextResponse.json({
+      success: true,
+      message: "Admin updated successfully",
+      data: updatedAdmin,
+    });
   } catch (error) {
-    console.error("Error:", error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: error instanceof Error
-          ? error.message
-          : "Error while updating admin",
-      },
-      {
-        status: 500,
-      }
-    );
+    return NextResponse.json({
+      success: false,
+      message: error instanceof Error ? error.message : "Update error",
+    }, { status: 500 });
   }
 }
 
-// DELETE admin by ID
+// DELETE handler
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id_admin: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id_admin: string }> }
 ) {
+  const params = await context.params;
+  const { id_admin } = params;
+  
+  // Validasi ID
+  if (!id_admin) {
+    return NextResponse.json(
+      { success: false, message: "Invalid admin ID" },
+      { status: 400 }
+    );
+  }
+  
   try {
-    // Check if admin exists
     const existingAdmin = await prisma.admin.findUnique({
-      where: { id_admin: params.id_admin },
+      where: { id_admin },
     });
 
     if (!existingAdmin) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Admin not found",
-        },
-        {
-          status: 404,
-        }
-      );
+      return NextResponse.json({ 
+        success: false, 
+        message: "Admin not found" 
+      }, { status: 404 });
     }
 
-    // Delete admin
     await prisma.admin.delete({
-      where: { id_admin: params.id_admin },
+      where: { id_admin },
     });
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Admin deleted successfully",
-      },
-      {
-        status: 200,
-      }
-    );
+    return NextResponse.json({ 
+      success: true, 
+      message: "Admin deleted successfully" 
+    });
   } catch (error) {
-    console.error("Error:", error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: error instanceof Error
-          ? error.message
-          : "Error while deleting admin",
-      },
-      {
-        status: 500,
-      }
-    );
+    return NextResponse.json({
+      success: false,
+      message: error instanceof Error ? error.message : "Delete error",
+    }, { status: 500 });
   }
-}
+} 
