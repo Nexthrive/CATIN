@@ -170,7 +170,7 @@ export default function ContohPage() {
   };
 
   return (
-    <div className="font-[family-name:var(--font-outfit)]">
+    <div className="font-outfit">
      <header>
         <nav>
           <div className="flex flex-row py-16 justify-between px-4 md:px-12 lg:px-24">
@@ -222,16 +222,16 @@ export default function ContohPage() {
       <main className="flex px-4 sm:px-24">
         <div className="flex flex-col  w-full gap-6">
           <div className="">
-            <h1 className="font-semibold text-[#171717] text-left text-[32px] tracking-tight leading-none ">
+            <h1 className="font-semibold text-lightblack-100 text-left text-[32px] tracking-tight leading-none ">
               It’s simple
             </h1>
-            <h1 className="font-semibold text-[#171717] text-left text-[32px] tracking-tight leading-none ">
+            <h1 className="font-semibold text-lightblack-100 text-left text-[32px] tracking-tight leading-none ">
               Pick. Design. Send.
             </h1>
           </div>
           <div className="flex flex-col gap-4">
             <div className="relative w-full">
-              <div className="flex items-center overflow-hidden py-1 px-2 font-[family-name:var(--font-poppins)] rounded-full bg-[#FFFFFF] shadow-[0px_2px_10px_2px_rgba(0,0,0,0.05)]">
+              <div className="flex items-center overflow-hidden py-1 px-2 font-poppins rounded-full bg-[#FFFFFF] shadow-[0px_2px_10px_2px_rgba(0,0,0,0.05)]">
                 <Input
                   type="text"
                   placeholder="Search..."

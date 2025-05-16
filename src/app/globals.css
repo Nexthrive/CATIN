@@ -112,6 +112,22 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+@theme {
+  --font-poppins: Poppins, sans-serif;
+  --font-outfit: Outfit, sans-serif;
+  --color-washedC-100: #F5F6FC;
+  --color-greyC-100: #C1C5E2;
+  --color-greyerC-100: #868687;
+  --color-lightblack-100: #171717;
+  --color-whiteC-100: #E5E5EF;
+  --color-blueC-600: #1E1B39;
+  --color-grayC-300: #9291A5;
+  --color-successC-100: #22C55E;
+  --color-dangerC-100: #F43F5E;
+  --shadow-soft:0px 4px 30px 2px rgba(0, 0, 0, 0.1);
+}
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
