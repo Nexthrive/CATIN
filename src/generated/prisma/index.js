@@ -165,7 +165,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/k0ruru/projects/CATIN/src/generated/prisma",
+      "value": "/home/cey0/Documents/catin/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -179,7 +179,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/k0ruru/projects/CATIN/prisma/schema.prisma",
+    "sourceFilePath": "/home/cey0/Documents/catin/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -193,11 +193,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mysql://Catin:Catin@localhost:3305/Catin"
+        "value": null
       }
     }
   },
