@@ -64,7 +64,7 @@ export default function Home() {
         <div
           ref={bottomNavRef}
           style={{ visibility: "hidden" }}
-          className="bg-lightblack-100 absolute flex justify-between items-center bottom-8 w-[90%] rounded-xl pl-4 pr-6 py-4"
+          className="bg-blackC-100 absolute flex justify-between items-center bottom-8 w-[90%] rounded-xl pl-4 pr-6 py-4"
         >
           <div className="flex items-center gap-3">
             <Button

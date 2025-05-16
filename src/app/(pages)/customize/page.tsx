@@ -26,6 +26,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+
 const fromSchema = z.object({
   groomFullName: z.string(),
   groomName: z.string(),
@@ -38,8 +39,37 @@ const fromSchema = z.object({
   adress: z.string(),
   location: z.string(),
 });
-
+import { usePathname } from 'next/navigation';
+import { useEffect,useRef } from "react";
 export default function Home() {
+  const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const underlineRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const menu = menuRef.current;
+    const underline = underlineRef.current;
+    if (!menu || !underline) return; 
+
+    const links = Array.from(menu.querySelectorAll('a'));
+
+    const activeLink = links.find(link => link.getAttribute('href') === pathname) || links[0];
+
+    const moveLineTo = (el:any) => {
+      const rect = el.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+
+      underline.style.width = rect.width + 8 + 'px'; 
+      underline.style.left = rect.left - menuRect.left - 3 + 'px';  
+    };
+
+    moveLineTo(activeLink);
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => moveLineTo(link));
+    });
+
+    menu.addEventListener('mouseleave', () => moveLineTo(activeLink));
+  }, [pathname]);
   const form = useForm({
     resolver: zodResolver(fromSchema),
     defaultValues: {
@@ -68,13 +98,13 @@ export default function Home() {
 
   return (
     <div className="font-outfit h-full">
-      <header>
-        <nav className="">
-          <div className="flex w-full flex-row py-16 justify-between px-4 md:px-12 lg:px-24">
-            <div className="flex items-center md:hidden">
+     <header>
+        <nav>
+          <div className="flex flex-row py-16 justify-between px-4 md:px-12 lg:px-24">
+            <div className="flex md:hidden items-center">
               <Sheet>
-                <SheetTrigger>
-                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+                <SheetTrigger className="md:hidden">
+                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" /> 
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader className="flex flex-col gap-10">
@@ -94,25 +124,61 @@ export default function Home() {
                   </SheetHeader>
                 </SheetContent>
               </Sheet>
+
             </div>
-            <Image src="/Catin.svg" width={48} height={48} alt="Logo" />
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/">
-                Home
-              </Link>
-              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/design">
-                Designs
-              </Link>
+            <div className="flex items-center">
+              <div className="flex">
+              <Image src="/Catin.svg" width={48} height={48} alt="Logo" className="md:ml-0" />
+             
+              </div>
+              <div className="hidden md:block h-6 w-[1.2px] bg-blackC-100 mx-6"></div>
+              <div
+              className="relative hidden md:flex items-center space-x-8"
+              ref={menuRef}
+              >
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/' ? 'text-sky-600' : 'text-blackC-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/design' ? 'text-sky-600' : 'text-blackC-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/design"
+                >
+                  Designs
+                </Link>
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/invitation' ? 'text-sky-600' : 'text-blackC-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/invitation"
+                >
+                  Active Invitations
+                </Link>
+
+                <div
+                  ref={underlineRef}
+                  className="absolute bottom-0 h-[3px] bg-sky-400 transition-all duration-300"
+                />
+              </div>
             </div>
-            
-            <button>
-              <Avatar>
+            <div className="font-poppins hidden md:flex gap-4">
+              {/* <Avatar>
                 <AvatarImage src="/Profile.svg" />
                 <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </button>
+              </Avatar> */}
+              <Button className="px-9 text-base leading-3 py-6  rounded-[21px]">
+                <p>Sign Up</p>
+              </Button>
+              <Button variant={"outline"} className="text-blueC-100 px-9 text-base leading-3 py-6  rounded-[21px] border-blueC-100 border-[1.5px]">
+                Login
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
@@ -151,7 +217,7 @@ export default function Home() {
                                 <Input
                                   required
                                   placeholder="Full Name"
-                                  className="border-t-0 border-x-0 focus-visible:ring-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                                  className="border-t-0 border-x-0 focus-visible:ring-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                                   {...field}
                                 />
                               </FormControl>
@@ -169,7 +235,7 @@ export default function Home() {
                                 <Input
                                   required
                                   placeholder="Name"
-                                  className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                                  className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                                   {...field}
                                 />
                               </FormControl>
@@ -187,7 +253,7 @@ export default function Home() {
                             <Input
                               required
                               placeholder="Father's Name"
-                              className="border-t-0 border-x-0 focus-visible:ring-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                              className="border-t-0 border-x-0 focus-visible:ring-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                               {...field}
                             />
                           </FormControl>
@@ -203,7 +269,7 @@ export default function Home() {
                             <Input
                               required
                               placeholder="Mother's Name"
-                              className="border-t-0 border-x-0 focus-visible:ring-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                              className="border-t-0 border-x-0 focus-visible:ring-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                               {...field}
                             />
                           </FormControl>
@@ -232,7 +298,7 @@ export default function Home() {
                                 <Input
                                   required
                                   placeholder="Full Name"
-                                  className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                                  className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                                   {...field}
                                 />
                               </FormControl>
@@ -250,7 +316,7 @@ export default function Home() {
                                 <Input
                                   required
                                   placeholder="Name"
-                                  className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                                  className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                                   {...field}
                                 />
                               </FormControl>
@@ -268,7 +334,7 @@ export default function Home() {
                             <Input
                               required
                               placeholder="Father's Name"
-                              className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                              className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                               {...field}
                             />
                           </FormControl>
@@ -284,7 +350,7 @@ export default function Home() {
                             <Input
                               required
                               placeholder="Mother's Name"
-                              className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                              className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                               {...field}
                             />
                           </FormControl>
@@ -312,7 +378,7 @@ export default function Home() {
                           <Input
                             required
                             placeholder="Venue"
-                            className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                            className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                             {...field}
                           />
                         </FormControl>
@@ -328,7 +394,7 @@ export default function Home() {
                           <Input
                             required
                             placeholder="Address"
-                            className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-lightblack-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
+                            className="border-t-0 focus-visible:ring-0 border-x-0 shadow-none rounded-none border-blackC-100 border-b-[0.5px] placeholder:text-[#A4A4A4] placeholder:italic text-xs p-2 md:text-sm lg:text-base lg:p-3"
                             {...field}
                           />
                         </FormControl>

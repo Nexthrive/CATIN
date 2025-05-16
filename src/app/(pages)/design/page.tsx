@@ -235,14 +235,14 @@ export default function ContohPage() {
               <Image src="/Catin.svg" width={48} height={48} alt="Logo" className="md:ml-0" />
              
               </div>
-              <div className="hidden md:block h-6 w-[1.2px] bg-lightblack-100 mx-6"></div>
+              <div className="hidden md:block h-6 w-[1.2px] bg-blackC-100 mx-6"></div>
               <div
               className="relative hidden md:flex items-center space-x-8"
               ref={menuRef}
               >
                 <Link
                   className={`font-normal text-base ${
-                    pathname === '/' ? 'text-sky-600' : 'text-lightblack-100'
+                    pathname === '/' ? 'text-sky-600' : 'text-blackC-100'
                   } hover:text-gray-600 transition-colors`}
                   href="/"
                 >
@@ -250,7 +250,7 @@ export default function ContohPage() {
                 </Link>
                 <Link
                   className={`font-normal text-base ${
-                    pathname === '/design' ? 'text-sky-600' : 'text-lightblack-100'
+                    pathname === '/design' ? 'text-sky-600' : 'text-blackC-100'
                   } hover:text-gray-600 transition-colors`}
                   href="/design"
                 >
@@ -258,7 +258,7 @@ export default function ContohPage() {
                 </Link>
                 <Link
                   className={`font-normal text-base ${
-                    pathname === '/invitation' ? 'text-sky-600' : 'text-lightblack-100'
+                    pathname === '/invitation' ? 'text-sky-600' : 'text-blackC-100'
                   } hover:text-gray-600 transition-colors`}
                   href="/invitation"
                 >
@@ -279,7 +279,7 @@ export default function ContohPage() {
               <Button className="px-9 text-base leading-3 py-6  rounded-[21px]">
                 <p>Sign Up</p>
               </Button>
-              <Button variant={"outline"} className="text-[#6BCEF5] px-9 text-base leading-3 py-6  rounded-[21px] border-[#6BCEF5] border-[1.5px]">
+              <Button variant={"outline"} className="text-blueC-100 px-9 text-base leading-3 py-6  rounded-[21px] border-blueC-100 border-[1.5px]">
                 Login
               </Button>
             </div>
@@ -289,10 +289,10 @@ export default function ContohPage() {
       <main className="flex px-4 sm:px-24">
         <div className="flex flex-col  w-full gap-6">
           <div className="">
-            <h1 className="font-semibold text-lightblack-100 text-left text-[32px] tracking-tight leading-none ">
+            <h1 className="font-semibold text-blackC-100 text-left text-[32px] tracking-tight leading-none ">
               It’s simple
             </h1>
-            <h1 className="font-semibold text-lightblack-100 text-left text-[32px] tracking-tight leading-none ">
+            <h1 className="font-semibold text-blackC-100 text-left text-[32px] tracking-tight leading-none ">
               Pick. Design. Send.
             </h1>
           </div>
@@ -321,7 +321,7 @@ export default function ContohPage() {
               <Button
                 className={
                   activeButton === "All"
-                    ? "bg-[#6BCEF5] rounded-xl px-3 py-2 text-black hover:bg-[#6BCEF5]/70"
+                    ? "bg-blueC-100 rounded-xl px-3 py-2 text-black hover:bg-blueC-100/70"
                     : "rounded-xl hover:bg-zinc-500/30 px-3 py-2"
                 }
                 variant={activeButton === "All" ? "default" : "ghost"}
@@ -332,7 +332,7 @@ export default function ContohPage() {
               <Button
                 className={
                   activeButton === "Popular"
-                    ? "bg-[#6BCEF5] rounded-xl px-3 py-2 text-black hover:bg-[#6BCEF5]/70"
+                    ? "bg-blueC-100 rounded-xl px-3 py-2 text-black hover:bg-blueC-100/70"
                     : "rounded-xl hover:bg-zinc-500/30 px-3 py-2"
                 }
                 variant={activeButton === "Popular" ? "default" : "ghost"}
@@ -343,7 +343,7 @@ export default function ContohPage() {
               <Button
                 className={
                   activeButton === "New Designs"
-                    ? "bg-[#6BCEF5] rounded-xl px-3 py-2 text-black hover:bg-[#6BCEF5]/70"
+                    ? "bg-blueC-100 rounded-xl px-3 py-2 text-black hover:bg-blueC-100/70"
                     : "rounded-xl hover:bg-zinc-500/30 px-3 py-2"
                 }
                 variant={activeButton === "New Designs" ? "default" : "ghost"}

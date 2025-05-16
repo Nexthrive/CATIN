@@ -72,16 +72,16 @@ export default function AdminPage() {
             <div className="flex flex-col gap-3">
               <div className="flex gap-6 justify-around">
                 <div className="border p-[25px] flex flex-col gap-2 w-[80%] bg-white shadow-soft border-whiteC-100 rounded-md">
-                  <p className="text-grayC-300 leading-[21px] text-sm  font-normal">Total Revenue</p>
-                  <h1 className="leading-12 font-semibold text-[32px] text-blueC-600">Rp. 2.5M</h1>
+                  <p className="text-greyC-100 leading-[21px] text-sm  font-normal">Total Revenue</p>
+                  <h1 className="leading-12 font-semibold text-[32px] text-blackC-100">Rp. 2.5M</h1>
                   <div className="flex items-start gap-3">
                   <Image src="/UpGreen.svg" className="pt-1.5" width={8} height={4} alt="UpGreen"/>
                   <p className="text-successC-100 leading-[21px] font-normal text-sm">12.5%</p>
                   </div>
                 </div>
                 <div className="border p-[25px] flex flex-col gap-2 w-[80%] bg-white shadow-soft border-whiteC-100 rounded-md">
-                  <p className="text-grayC-300 leading-[21px] text-sm  font-normal">Total Users</p>
-                  <h1 className="leading-12 font-semibold text-[32px] text-blueC-600">12,500</h1>
+                  <p className="text-greyC-100 leading-[21px] text-sm  font-normal">Total Users</p>
+                  <h1 className="leading-12 font-semibold text-[32px] text-blackC-100">12,500</h1>
                   <div className="flex items-start gap-3">
                   <Image src="/UpGreen.svg" className="pt-1.5" width={8} height={4} alt="UpGreen"/>
                   <p className="text-successC-100 leading-[21px] font-normal text-sm">12.5%</p>
@@ -89,8 +89,8 @@ export default function AdminPage() {
                   </div>
                 </div>
                 <div className="border p-[25px] flex flex-col gap-2 w-[80%] bg-white shadow-soft border-whiteC-100 rounded-md">
-                  <p className="text-grayC-300 leading-[21px] text-sm  font-normal">Total Orders</p>
-                  <h1 className="leading-12 font-semibold text-[32px] text-blueC-600">8,900</h1>
+                  <p className="text-greyC-100 leading-[21px] text-sm  font-normal">Total Orders</p>
+                  <h1 className="leading-12 font-semibold text-[32px] text-blackC-100">8,900</h1>
                   <div className="flex items-end gap-3">
                   <Image src="/DownRed.svg" className="pb-2" width={8} height={4} alt="DownRed"/>
                   <p className="text-dangerC-100 leading-[21px] font-normal text-sm">3.1%</p>
@@ -101,7 +101,7 @@ export default function AdminPage() {
               <div className="flex gap-6">
                 <div className="border p-[24px] flex flex-col gap-6 w-[80%] bg-white shadow-soft border-whiteC-100 rounded-md">
                   <div className="flex items-center justify-between">
-                    <h1 className="leading-7 font-semibold text-[18px] text-blueC-600">Recent Orders</h1>
+                    <h1 className="leading-7 font-semibold text-[18px] text-blackC-100">Recent Orders</h1>
                     <p className="text-[#4318D1] font-normal text-sm leading-[21px]">View All</p>
                   </div>
                   <div className="flex flex-col gap-4">
@@ -109,21 +109,21 @@ export default function AdminPage() {
                     <div className="flex gap-3 items-center">
                       <Image src="/40PXTemplate.svg" className="" width={40} height={40} alt="Template"/>
                       <div className="">
-                        <p className="text-blueC-600 leading-[21px] font-medium text-sm">Premium Template</p>
-                        <p className="text-grayC-300 leading-[18px] font-normal text-xs">2 minutes ago</p>
+                        <p className="text-blackC-100 leading-[21px] font-medium text-sm">Premium Template</p>
+                        <p className="text-greyC-100 leading-[18px] font-normal text-xs">2 minutes ago</p>
                       </div>
                     </div>
-                    <p className="text-blueC-600 leading-[21px] font-medium text-sm">Rp. 974k</p>
+                    <p className="text-blackC-100 leading-[21px] font-medium text-sm">Rp. 974k</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex gap-3 items-center">
                       <Image src="/40PXTemplate.svg" className="" width={40} height={40} alt="Template"/>
                       <div className="">
-                        <p className="text-blueC-600 leading-[21px] font-medium text-sm">Basic Template</p>
-                        <p className="text-grayC-300 leading-[18px] font-normal text-xs">5 minutes ago</p>
+                        <p className="text-blackC-100 leading-[21px] font-medium text-sm">Basic Template</p>
+                        <p className="text-greyC-100 leading-[18px] font-normal text-xs">5 minutes ago</p>
                       </div>
                     </div>
-                    <p className="text-blueC-600 leading-[21px] font-medium text-sm">Rp. 479k</p>
+                    <p className="text-blackC-100 leading-[21px] font-medium text-sm">Rp. 479k</p>
                   </div>
                   </div>
                   
@@ -131,7 +131,7 @@ export default function AdminPage() {
       
                 <div className="border p-[24px] flex flex-col gap-6 w-[80%] bg-white shadow-soft border-whiteC-100 rounded-md">
                 <div className="flex items-center justify-between">
-                  <h1 className="leading-7 font-semibold text-[18px] text-blueC-600">Recent Users</h1>
+                  <h1 className="leading-7 font-semibold text-[18px] text-blackC-100">Recent Users</h1>
                   <p className="text-[#4318D1] font-normal text-sm leading-[21px]">View All</p>
                 </div>
                 <div className="flex flex-col gap-4">
@@ -139,8 +139,8 @@ export default function AdminPage() {
                   <div className="flex gap-3 items-center">
                     <Image src="/40PXTemplate.svg" className="rounded-full" width={40} height={40} alt="Template"/>
                     <div className="">
-                      <p className="text-blueC-600 leading-[21px] font-medium text-sm">John Smith</p>
-                      <p className="text-grayC-300 leading-[18px] font-normal text-xs">Premium User</p>
+                      <p className="text-blackC-100 leading-[21px] font-medium text-sm">John Smith</p>
+                      <p className="text-greyC-100 leading-[18px] font-normal text-xs">Premium User</p>
                     </div>
                   </div>
                   <p className="text-successC-100 leading-[21px] font-medium text-sm">Active</p>
@@ -149,8 +149,8 @@ export default function AdminPage() {
                   <div className="flex gap-3 items-center">
                     <Image src="/40PXTemplate.svg" className="rounded-full" width={40} height={40} alt="Template"/>
                     <div className="">
-                      <p className="text-blueC-600 leading-[21px] font-medium text-sm">Sarah Johnson</p>
-                      <p className="text-grayC-300 leading-[18px] font-normal text-xs">Basic User</p>
+                      <p className="text-blackC-100 leading-[21px] font-medium text-sm">Sarah Johnson</p>
+                      <p className="text-greyC-100 leading-[18px] font-normal text-xs">Basic User</p>
                     </div>
                   </div>
                   <p className="text-successC-100 leading-[21px] font-medium text-sm">Active</p>
@@ -165,8 +165,8 @@ export default function AdminPage() {
             <CardHeader className=" px-10 gap-0">
                 <div className="flex items-center justify-between  border-whiteC-100 border-b-2 pb-3">
                   <div className="flex  flex-col">
-                    <CardTitle className="text-[18px] text-grayC-300 leading-5 font-normal tracking-normal">Statistics</CardTitle>
-                    <CardDescription className="text-[22px] text-blueC-600 font-semibold leading-7">Sales report</CardDescription>
+                    <CardTitle className="text-[18px] text-greyC-100 leading-5 font-normal tracking-normal">Statistics</CardTitle>
+                    <CardDescription className="text-[22px] text-blackC-100 font-semibold leading-7">Sales report</CardDescription>
                   </div>
                   <div className="flex gap-4">
                     <button 
@@ -174,21 +174,21 @@ export default function AdminPage() {
                       className={`flex items-center gap-2 pl-4 pr-3 py-2 rounded-md border ${filters.productSales ? 'border-[#962DFF] bg-[#962DFF]/10' : 'border-whiteC-100 bg-white'}`}
                     >
                       <span className="w-2 h-2 rounded-full bg-[#962DFF]" />
-                      <span className="text-xs text-blueC-600 leading-3.5">Product sales</span>
+                      <span className="text-xs text-blackC-100 leading-3.5">Product sales</span>
                     </button>
                     <button 
                       onClick={() => toggleFilter('subscriptionSales')}
                       className={`flex items-center gap-2 pl-4 pr-3 py-2 rounded-md border ${filters.subscriptionSales ? 'border-[#FF718B] bg-[#FF718B]/10' : 'border-whiteC-100 bg-white'}`}
                     >
                       <span className="w-2 h-2 rounded-full bg-[#FF718B]" />
-                      <span className="text-xs text-blueC-600 leading-3.5">Subscription sales</span>
+                      <span className="text-xs text-blackC-100 leading-3.5">Subscription sales</span>
                     </button>
                     <button 
                       onClick={() => toggleFilter('otherSales')}
                       className={`flex items-center gap-2 pl-4 pr-3 py-2 rounded-md border ${filters.otherSales ? 'border-[#93AAFD] bg-[#93AAFD]/10' : 'border-whiteC-100 bg-white'}`}
                     >
                       <span className="w-2 h-2 rounded-full bg-[#93AAFD]" />
-                      <span className="text-xs text-blueC-600 leading-3.5">Other sales</span>
+                      <span className="text-xs text-blackC-100 leading-3.5">Other sales</span>
                     </button>
                   </div>
                 </div>

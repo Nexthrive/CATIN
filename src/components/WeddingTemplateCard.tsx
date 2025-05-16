@@ -35,7 +35,7 @@ export default function WeddingTemplateCard({
         className="relative bg-cover h-[282px] flex justify-center w-[168px]  lg:h-[350px] lg:w-[210px]"
       >
         <Button
-          className="rounded-full absolute py-3 px-6 -bottom-4 mx-auto bg-lightblack-100 text-white font-poppins text-xs font-medium md:py-4 md:px-8 md:text-sm lg:py-5 lg:px-10 lg:text-sm"
+          className="rounded-full absolute py-3 px-6 -bottom-4 mx-auto bg-blackC-100 text-white font-poppins text-xs font-medium md:py-4 md:px-8 md:text-sm lg:py-5 lg:px-10 lg:text-sm"
           asChild
         >
           <Link href={linkTo}>Order Now</Link>
