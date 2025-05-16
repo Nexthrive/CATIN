@@ -10,34 +10,34 @@ const PUBLIC_API_ROUTES = [
 ]
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  const method = request.method
+  // const { pathname } = request.nextUrl
+  // const method = request.method
 
-  // Check if this is a public API route that should bypass auth
-  const isPublicRoute = PUBLIC_API_ROUTES.some(
-    route => pathname.startsWith(route.path) && method === route.method
-  )
+  // // Check if this is a public API route that should bypass auth
+  // const isPublicRoute = PUBLIC_API_ROUTES.some(
+  //   route => pathname.startsWith(route.path) && method === route.method
+  // )
 
-  if (isPublicRoute) {
-    return NextResponse.next()
-  }
+  // if (isPublicRoute) {
+  //   return NextResponse.next()
+  // }
 
-  // Handle API routes
-  if (pathname.startsWith('/api/')) {
-    return verifyToken(request)
-  }
+  // // Handle API routes
+  // if (pathname.startsWith('/api/')) {
+  //   return verifyToken(request)
+  // }
 
-  // Handle frontend pages
-  return authPageMiddleware(request)
+  // // Handle frontend pages
+  // return authPageMiddleware(request)
 }
 
-export const config = {
-  matcher: [
-    // API routes - cover all API routes properly
-    '/api/:path*',
+// export const config = {
+//   matcher: [
+//     // API routes - cover all API routes properly
+//     '/api/:path*',
     
-    // Frontend pages
-    '/dashboard/:path*',
-    '/',
-  ],
-}
+//     // Frontend pages
+//     '/dashboard/:path*',
+//     '/',
+//   ],
+// }

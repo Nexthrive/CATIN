@@ -1,7 +1,13 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+
 import {
   Sheet,
   SheetContent,
@@ -11,6 +17,47 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 export default function Home() {
+  const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const underlineRef = useRef<HTMLDivElement | null>(null);
+  const rectangleRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const rectangles = rectangleRefs.current.filter(Boolean);
+    
+    gsap.from(rectangles, {
+      y: 600,
+      duration: 0.8,
+      stagger: 0.25, 
+      ease: "power2.out"
+    });
+  }, []);
+
+  useEffect(() => {
+    const menu = menuRef.current;
+    const underline = underlineRef.current;
+    if (!menu || !underline) return; 
+
+    const links = Array.from(menu.querySelectorAll('a'));
+
+    const activeLink = links.find(link => link.getAttribute('href') === pathname) || links[0];
+
+    const moveLineTo = (el:any) => {
+      const rect = el.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+
+      underline.style.width = rect.width + 8 + 'px'; 
+      underline.style.left = rect.left - menuRect.left - 3 + 'px';  
+    };
+
+    moveLineTo(activeLink);
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => moveLineTo(link));
+    });
+
+    menu.addEventListener('mouseleave', () => moveLineTo(activeLink));
+  }, [pathname]);
   return (
     <div className="font-outfit">
       <header>
@@ -19,7 +66,7 @@ export default function Home() {
             <div className="flex md:hidden items-center">
               <Sheet>
                 <SheetTrigger className="md:hidden">
-                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" /> 
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader className="flex flex-col gap-10">
@@ -41,45 +88,99 @@ export default function Home() {
               </Sheet>
 
             </div>
+            <div className="flex items-center">
+              <div className="flex">
               <Image src="/Catin.svg" width={48} height={48} alt="Logo" className="md:ml-0" />
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/">
-                Home
-              </Link>
-              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/design">
-                Designs
-              </Link>
+             
+              </div>
+              <div className="hidden md:block h-6 w-[1.2px] bg-lightblack-100 mx-6"></div>
+              <div
+              className="relative hidden md:flex items-center space-x-8"
+              ref={menuRef}
+              >
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/' ? 'text-sky-600' : 'text-lightblack-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/design' ? 'text-sky-600' : 'text-lightblack-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/design"
+                >
+                  Designs
+                </Link>
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/invitation' ? 'text-sky-600' : 'text-lightblack-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/invitation"
+                >
+                  Active Invitations
+                </Link>
+
+                <div
+                  ref={underlineRef}
+                  className="absolute bottom-0 h-[3px] bg-sky-400 transition-all duration-300"
+                />
+              </div>
             </div>
-            
-            <button>
-              <Avatar>
+            <div className="font-poppins hidden md:flex gap-4">
+              {/* <Avatar>
                 <AvatarImage src="/Profile.svg" />
                 <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </button>
+              </Avatar> */}
+              <Button className="px-9 text-base leading-3 py-6  rounded-[21px]">
+                <p>Sign Up</p>
+              </Button>
+              <Button variant={"outline"} className="text-[#6BCEF5] px-9 text-base leading-3 py-6  rounded-[21px] border-[#6BCEF5] border-[1.5px]">
+                Login
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
-      <main className="flex mt-10 justify-center items-center flex-col md:mt-16 lg:mt-24  lg:min-h-[520px]">
-        <div className="flex justify-center items-center flex-col gap-8 md:gap-12 lg:flex-row lg:w-full lg:mx-10 lg:gap-0">
-          <div className="flex flex-col items-center lg:items-start lg:w-1/2">
-            <h1 className="font-semibold text-lightblack-100 text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:text-6xl lg:text-left lg:max-w-[30ch]">
-              The only tool you need to craft perfect wedding invitations!
+      <main className="flex justify-center items-center flex-col md:mt-16 lg:mt-10 w-full  lg:min-h-[657px]">
+        <div className="flex justify-center  items-center relative flex-col gap-8 md:gap-12 lg:w-full lg:mx-10 lg:gap-0">
+          <div className="flex flex-col lg:top-15  lg:relative items-center lg:items-center lg:w-1/2">
+            <h1 className="font-medium text-lightblack-100 text-center text-[32px] tracking-tight leading-none max-w-[14ch] md:text-4xl lg:max-w-[50ch] lg:leading-[88px] lg:text-[88px]  lg:text-center lg:text-nowrap">
+              Pick. Customize. Send
             </h1>
-            <div className="hidden lg:flex flex-col justify-center items-center gap-4 mt-8 lg:items-start">
-              <p className="text-black font-poppins font-medium leading-3 md:text-lg">
-                Catin is here to help you...
+            <div className="hidden lg:flex flex-col lg:gap-16 justify-center items-center  gap-4 mt-8 ">
+              <p className="text-[#686868] font-poppins font-normal leading-6 max-w-[60ch] text-center md:text-base">
+              From selecting your style to placing your order, create unique wedding invitations in just a few clicks. Let's get started!
               </p>
               <Button
-                className="rounded-full py-3 px-6 bg-lightblack-100 text-white font-poppins text-xs font-medium md:text-sm md:py-4 md:px-8 hover:bg-gray-800 transition-colors"
+                className="rounded-full lg:absolute lg:top-60 py-3 md:z-100 px-6 bg-lightblack-100 text-white font-poppins text-xs font-medium md:text-base md:leading-3 md:py-7 md:px-10 md:rounded-[21px] hover:bg-gray-800 transition-colors"
                 asChild
               >
                 <Link href={"/design"}>Explore designs</Link>
               </Button>
             </div>
           </div>
-          <div className=" ">
+          <div className="hidden lg:flex opacity-[64%] justify-center relative">
+              <div 
+                ref={(el: HTMLDivElement | null) => { rectangleRefs.current[0] = el }}
+                className="w-[318.67px] h-[558.6px] relative left-0 -bottom-75 rounded-[8px] bg-[#499ABB]"
+              ></div>
+              <div 
+                ref={(el: HTMLDivElement | null) => { rectangleRefs.current[1] = el }}
+                className="w-[318.67px] h-[558.6px] rounded-[8px] -left-20 -bottom-25 relative bg-[#6BCEF5]"
+              ></div>
+              <div 
+                ref={(el: HTMLDivElement | null) => { rectangleRefs.current[2] = el }}
+                className="w-[318.67px] h-[558.6px] rounded-[8px] absolute left-100 z-15 -bottom-100 bg-[#98E2FF]"
+              ></div>
+              <div 
+                ref={(el: HTMLDivElement | null) => { rectangleRefs.current[3] = el }}
+                className="w-[318.67px] h-[558.6px] rounded-[8px] relative -bottom-45 bg-[#63BDE1]"
+              ></div>
+            </div>
+          <div className="lg:hidden ">
             <Image
               src="/4Rectangles.svg"
               width={251}
@@ -101,7 +202,7 @@ export default function Home() {
             </div>
         </div>
       </main>
-      <section className="bg-accent-foreground mt-45 py-40 px-4 md:px-12  lg:px-54 md:py-60 lg:py-80">
+      <section className="bg-accent-foreground mt-20 lg:mt-0 md:relative md:z-100 py-40 px-4 md:px-12  lg:px-54 md:py-60 lg:py-80">
         <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 w-full lg:max-w-none">
           <h2 className="font-semibold text-[32px] text-white md:text-4xl lg:text-6xl">
             How it{" "}

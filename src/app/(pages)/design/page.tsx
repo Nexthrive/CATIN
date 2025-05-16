@@ -6,6 +6,9 @@ import WeddingTemplateCard from "@/components/WeddingTemplateCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+
 import {
   Sheet,
   SheetContent,
@@ -25,13 +28,13 @@ type TemplateData = {
 };
 
 export default function ContohPage() {
-  // Track which category button is active
+
   const [activeButton, setActiveButton] = useState("All");
 
-  // Add state to track the search term
+
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Your template data array
+
   const templateData: TemplateData[] = [
     {
       id: "template1",
@@ -130,7 +133,35 @@ export default function ContohPage() {
       linkTo: "/preview",
     },
   ];
+  const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const underlineRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    const menu = menuRef.current;
+    const underline = underlineRef.current;
+    if (!menu || !underline) return; 
+
+    const links = Array.from(menu.querySelectorAll('a'));
+
+    const activeLink = links.find(link => link.getAttribute('href') === pathname) || links[0];
+
+    const moveLineTo = (el:any) => {
+      const rect = el.getBoundingClientRect();
+      const menuRect = menu.getBoundingClientRect();
+
+      underline.style.width = rect.width + 8 + 'px'; 
+      underline.style.left = rect.left - menuRect.left - 3 + 'px';  
+    };
+
+    moveLineTo(activeLink);
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => moveLineTo(link));
+    });
+
+    menu.addEventListener('mouseleave', () => moveLineTo(activeLink));
+  }, [pathname]);
   // This function filters templates based on the active button category
   const filterByCategory = (templates: TemplateData[]) => {
     switch (activeButton) {
@@ -177,7 +208,7 @@ export default function ContohPage() {
             <div className="flex md:hidden items-center">
               <Sheet>
                 <SheetTrigger className="md:hidden">
-                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" />
+                  <Image src="/Hamburger.svg" width={32} height={24} alt="Logo" /> 
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader className="flex flex-col gap-10">
@@ -199,23 +230,59 @@ export default function ContohPage() {
               </Sheet>
 
             </div>
+            <div className="flex items-center">
+              <div className="flex">
               <Image src="/Catin.svg" width={48} height={48} alt="Logo" className="md:ml-0" />
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/">
-                Home
-              </Link>
-              <Link className="font-medium text-lg text-black hover:text-gray-600 transition-colors" href="/design">
-                Designs
-              </Link>
+             
+              </div>
+              <div className="hidden md:block h-6 w-[1.2px] bg-lightblack-100 mx-6"></div>
+              <div
+              className="relative hidden md:flex items-center space-x-8"
+              ref={menuRef}
+              >
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/' ? 'text-sky-600' : 'text-lightblack-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/"
+                >
+                  Home
+                </Link>
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/design' ? 'text-sky-600' : 'text-lightblack-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/design"
+                >
+                  Designs
+                </Link>
+                <Link
+                  className={`font-normal text-base ${
+                    pathname === '/invitation' ? 'text-sky-600' : 'text-lightblack-100'
+                  } hover:text-gray-600 transition-colors`}
+                  href="/invitation"
+                >
+                  Active Invitations
+                </Link>
+
+                <div
+                  ref={underlineRef}
+                  className="absolute bottom-0 h-[3px] bg-sky-400 transition-all duration-300"
+                />
+              </div>
             </div>
-            
-            <button>
-              <Avatar>
+            <div className="font-poppins flex gap-4">
+              {/* <Avatar>
                 <AvatarImage src="/Profile.svg" />
                 <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </button>
+              </Avatar> */}
+              <Button className="px-9 text-base leading-3 py-6  rounded-[21px]">
+                <p>Sign Up</p>
+              </Button>
+              <Button variant={"outline"} className="text-[#6BCEF5] px-9 text-base leading-3 py-6  rounded-[21px] border-[#6BCEF5] border-[1.5px]">
+                Login
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
